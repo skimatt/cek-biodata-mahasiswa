@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hasil Biodata Mahasiswa</title>
+  </head>
+  <body>
+    <h1>Hasil Biodata Mahasiswa</h1>
+    {% if results %}
+    <ul>
+      {% for result in results %}
+      <li>
+        <strong>NPM: {{ result.npm }}</strong><br />
+        {% if result.data %} Nama: {{ result.data.nama }}<br />
+        Program Studi: {{ result.data.program_studi }}<br />
+        Fakultas: {{ result.data.fakultas }}<br />
+        <!-- Tambahkan informasi lain sesuai kebutuhan -->
+        {% else %} Data tidak ditemukan atau terjadi kesalahan. {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Tidak ditemukan NPM dalam file PDF yang diunggah.</p>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Kembali ke halaman upload</a>
+  </body>
+</html>
